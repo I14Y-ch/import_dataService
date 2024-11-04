@@ -28,7 +28,9 @@ def replace_uri_with_href(data):
     else:
         return data
       
-
+#######################################
+# Metadata mapping from swagger.json to i14y
+#######################################
 
 # Initialize metadata dictionary
 metadata = {}
@@ -131,11 +133,11 @@ with open(output_file_path, 'w', encoding='utf-8') as output_file:
 
 print(f"Metadata extracted and saved to {output_file_path}.")
 
+#######################################
+# POST API metdata on i14y
+#######################################
 
-url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice"
-
-
-file_path = 'C:/Users/U80877014/Documents/metadata.json' #state the right file name here
+file_path = 'metadata.json' #state the right file name here
 with open(file_path, 'r') as file:
     json_data = file.read()
 
