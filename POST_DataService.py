@@ -14,7 +14,9 @@ swagger_file_path = 'openapi.json'
 with open(swagger_file_path, 'r', encoding='utf-8') as file:
     swagger_data = json.load(file)
 
-url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice" #endpoint URL
+#uncomment the right url PROD vs ABN
+url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice" #ABNHAME
+# url = "https://dcat.app.cfap02.atlantica.admin.ch/api/Dataservice" #PROD
 
 def replace_uri_with_href(data):
     if isinstance(data, dict):
