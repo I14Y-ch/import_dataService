@@ -21,7 +21,7 @@ Before using this script, ensure that you have the following:
 
 ### 2. Post the DataService:
 
-If you run the script will automatically post the generated metadata to the specified API endpoint and print the response status. 
+If you run the script will automatically post the generated metadata to the specified API endpoint (PROD or ABN) and print the response status. 
 
 ## Metadata Properties
 The metadata includes several properties, some of which are mandatory for successful posting. Below is a table detailing each property, whether it is mandatory, and what can be stated inside the property. More information regarding the properties and the standards used can be found [here](https://i14y-ch.github.io/handbook/de/6_anhang/eingabefelder/).
@@ -116,7 +116,8 @@ The metadata includes several properties, some of which are mandatory for succes
         ],
         "summary": "GET DCAT catalog in RDF format.",
         "description": "Retrieves DCAT catalog by catalog id in RDF format.",
-        "parameters": ...
+        "parameters":
+...
 
 
 
