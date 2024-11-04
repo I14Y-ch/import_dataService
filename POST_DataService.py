@@ -8,17 +8,13 @@ headers = {'Authorization': token, 'Content-Type': 'application/json'}
 language_tag = "en" #state the correct language used for documentation (fr, de, it, en, rm)
 id_publisher = " " #state the correct publisher id 
 
-
-# Paths to the files
+# Path to the swagger.json
 swagger_file_path = 'openapi.json'
-output_file_path = 'metadata.json'
-
-
-url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice" #endpoint URL
 # Load the swagger.json file
 with open(swagger_file_path, 'r', encoding='utf-8') as file:
     swagger_data = json.load(file)
 
+url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice" #endpoint URL
 
 def replace_uri_with_href(data):
     if isinstance(data, dict):
@@ -127,21 +123,24 @@ metadata['theme'] = [
 # Apply uri-to-href replacement on the whole metadata structure
 metadata = replace_uri_with_href(metadata)
 
-# Save the result to metadata.json
-with open(output_file_path, 'w', encoding='utf-8') as output_file:
-    json.dump(metadata, output_file, indent=4, ensure_ascii=False)
+#If you need to Save the result to metadata.json, then uncomment the following code
+# output_file_path = 'metadata.json' #state the right file name and path here
+# with open(output_file_path, 'w', encoding='utf-8') as output_file:
+#    json.dump(metadata, output_file, indent=4, ensure_ascii=False)
 
-print(f"Metadata extracted and saved to {output_file_path}.")
-
+# print(f"Metadata extracted and saved to {output_file_path}.")
+# file_path = 'metadata.json' 
+# with open(file_path, 'r') as file:
+#    json_data = file.read()
+    
 #######################################
 # POST API metdata on i14y
 #######################################
 
-file_path = 'metadata.json' #state the right file name here
-with open(file_path, 'r') as file:
-    json_data = file.read()
+# Convert metadata to JSON and send as request payload
+json_data = json.dumps(metadata, ensure_ascii=False, indent=4)
 
-response = post(url, headers=headers, data = json_data, verify = False)
+response = post(url, headers=headers, data=json_data, verify=False)
 if response.status_code == 201:
     print(f'DataService posted correctly. Status-Code: {response.status_code}')
     print(f'Concept Id: {response.content}')
