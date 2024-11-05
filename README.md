@@ -25,11 +25,12 @@ Before using this script, ensure that you have the following:
 If you run the script will automatically post the generated metadata to the specified API endpoint (PROD or ABN) and print the response status. 
 
 ## Update the DataService on I14Y
+
 If you need to update the DataService you can run the script `UPDATE_DataService.py`. First you need to set up the script: 
-    - `token`: Set your authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
-    - `id_publisher_i14y`: Set the correct publisher ID.
-    - `swagger_file_path`: Update this to point to your swagger.json file.
-    - `id_object`: state the id of the object that you need to update. *Note: the Id can be derived from the I14Y web interface in the URL of the page dedicated to the specific DataService: https://input.i14y-a.admin.ch/dataservices/{Id}*
+- `token`: Set your authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
+- `id_publisher_i14y`: Set the correct publisher ID.
+- `swagger_file_path`: Update this to point to your swagger.json file.
+- `id_object`: state the id of the object that you need to update. *Note: the Id can be derived from the I14Y web interface in the URL of the page dedicated to the specific DataService: https://input.i14y-a.admin.ch/dataservices/{Id}*
     
 ## Metadata Properties
 The metadata includes several properties, some of which are mandatory for successful posting. Below is a table detailing each property, whether it is mandatory, and what can be stated inside the property. More information regarding the properties and the standards used can be found [here](https://i14y-ch.github.io/handbook/de/6_anhang/eingabefelder/).
