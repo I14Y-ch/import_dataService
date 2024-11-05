@@ -47,67 +47,152 @@ The metadata includes several properties, some of which are mandatory for succes
 | __version__ | Enter the version number of the data collection. | string | optional |
 | __versionNotes__ | Enter additional information about the version here. | string | optional | 
 
-## Example of swagger.json: 
+## Example of swagger.json structure: 
 ``` 
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API name",
+    "title": "Esempio API",
     "description": "Technical description displayed in the swagger page.", 
-    "version": "1.0.0",
+    "version": "1.0.1",
     "contact": {
       "email": "example@email.com", 
-      "name": "contact name", 
-      "x-address": "contact addess",
-      "x-telephone": "0910000000",
-      "x-note": "This is a note to add to the contact point information"
+      "name": "contact name"
     },
     "x-metadata": {
-      "accessRights": {
+      "title": {
+        "de": "string",
+        "en": "API name",
+        "fr": "string",
+        "it": "string",
+        "rm": "string"
+    },
+    "description": {
+      "de": "string",
+      "en": "Business description of the API for non-technical users",
+      "fr": "string",
+      "it": "string",
+      "rm": "string"
+    },
+    "accessRights": {
         "code": "PUBLIC"
       },
+    "endpointDescription": [
+      {
+        "url": "https://endpointDescription.ch/",
+        "label": {
+          "de": "string",
+          "en": "string",
+          "fr": "string",
+          "it": "string",
+          "rm": "string"
+        }
+      }
+    ],
+    "endpointUrl": [
+      {
+        "url": "https://endpointUrl.ch/",
+        "label": {
+          "de": "string",
+          "en": "string",
+          "fr": "string",
+          "it": "string",
+          "rm": "string"
+        }
+      }
+    ],
+    "contactPoint":  [ {
+        "address": {
+          "de": "string",
+          "en": "string",
+          "fr": "string",
+          "it": "string",
+          "rm": "string"
+        },
+        "email": "string",
+        "organizationName": {
+          "de": "string",
+          "en": "string",
+          "fr": "string",
+          "it": "string",
+          "rm": "string"
+        },
+        "note": {
+          "de": "string",
+          "en": "string",
+          "fr": "string",
+          "it": "string",
+          "rm": "string"
+        },
+        "telephoneNumber": "string"
+      }
+    ],
       "conformsTo": [
         {
           "uri": "https://conformsto.ch/",
-          "label":  "Label for information about conformance"
-        }, 
-        {
-          "uri": "https://conformsto.ch/",
-          "label":  "Label for information about conformance"
-        }],
-      "description": "Business description of the API for non-technical users",
-      "endpointDescription": [{
-        "uri": "https://endpointdescription.ch/",
-        "label":  "Label for the endpoint description"
-      }, 
-      {"uri": "https://endpointdescription.ch/",
-      "label":  "Label for the endpoint description"}],
-      "endpointUrl": [{
-        "uri": "https://endpointurl.ch/",
-        "label":  "Label for the endpoint url"
-        },
-        {"uri": "https://endpointurl.ch/",
-        "label":  "Label for the endpoint url"
-        }],
-      "keyword": [
-        "keyword1", "keyword2"
+          "label": {
+            "de": "string",
+            "en": "string",
+            "fr": "string",
+            "it": "string",
+            "rm": "string"
+          }
+        }
       ],
-      "landingPage": [{
-        "uri": "https://landingpage.ch/",
-        "label":  "Label for the landing page"
-      }, {"uri": "https://landingpage.ch/",
-      "label":  "Label for the landing page"}],
+      
+        "keyword": [
+          {
+            "de": "string",
+            "en": "string",
+            "fr": "string",
+            "it": "string",
+            "rm": "string"
+          }
+        ],
+      "landingPage": [   {
+        "url": "https://landingPage.ch/",
+        "label": {
+          "de": "string",
+          "en": "Label for the landing page",
+          "fr": "string",
+          "it": "string",
+          "rm": "string"
+        }
+      },    {
+        "url": "https://landingPage1.ch/",
+        "label": {
+          "de": "string",
+          "en": "Label for the landing page",
+          "fr": "string",
+          "it": "string",
+          "rm": "string"
+        }
+      }],
 
       "license": {"code": "terms_by"},
       "theme": {"code": ["121", "119"]},
-      "versionNotes": "These are some version notes"
+      "versionNotes":{
+        "de": "string",
+        "en": "These are some version notes",
+        "fr": "string",
+        "it": "string",
+        "rm": "string"
+      }, 
+
+      "documentation": [
+        {
+          "url": "https://documentations.ch/",
+          "label": {
+            "de": "string",
+            "en": "string",
+            "fr": "string",
+            "it": "string",
+            "rm": "string"
+          }
+        }
+      ]
     }
   },
-  "externalDocs": {
-    "x-name": "name", 
-    "description": "Find more info regarding docs here",
-    "url": "https://example.com"
-  }, 
   "paths": {
     "/api/catalogs/{catalogId}/dcat/exports/rdf": {
       "get": {
