@@ -1,6 +1,6 @@
 # POST a DataService using swagger.json on I14Y
 
-This project contains a Python script `POST_DataService.py` that posts a DataService using the metadata extracted from a Swagger/OpenAPI JSON file and a python script `PUT_DataService.py` that updates the posted DataService. The scripts read the `swagger.json`, processe it to create the appropriate metadata format, and then send it to a I14Y API endpoint.
+This project contains a Python script `POST_DataService.py` that posts a DataService using the metadata extracted from a Swagger/OpenAPI JSON file and a python script `UPDATE_DataService.py` that updates the posted DataService. The scripts read the `swagger.json`, processe it to create the appropriate metadata format, and then send it to a I14Y API endpoint.
 
 Currently, the endpoint to POST a DataService on I14Y is not publicly available. It is expected to be made accessible in the coming months for automated use. If you need access immediately, please reach out to the [I14Y team](mailto:i14y@bfs.admin.ch); they can provide you with the appropriate publisher ID required to run the script.
 
@@ -25,7 +25,7 @@ Before using this script, ensure that you have the following:
 If you run the script will automatically post the generated metadata to the specified API endpoint (PROD or ABN) and print the response status. 
 
 ## Update the DataService on I14Y
-If you need to update the DataService you can run the script `PUT_DataService.py`. First you need to set up the script: 
+If you need to update the DataService you can run the script `UPDATE_DataService.py`. First you need to set up the script: 
     - `token`: Set your authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
     - `id_publisher_i14y`: Set the correct publisher ID.
     - `swagger_file_path`: Update this to point to your swagger.json file.
