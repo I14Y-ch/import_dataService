@@ -18,7 +18,7 @@ swagger_file_path = 'swagger.json' #specify the correct file path
 url_api_root = "" #specify the API url root
 
 #optional
-url_swagger = "" #specify the Swagger url 
+url_swagger = "" #specify the Swagger webpage url 
 
 #######################################
 # Logic to handle metadata
