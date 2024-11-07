@@ -16,8 +16,8 @@ id_publisher = ""  # Specify the publisher ID
 swagger_file_path = 'swagger.json' #specify the correct file path
 
 #if needed
-url_api_root = "" #specify the API url root
-language_tag = ""  # Specify the correct language (fr, de, it, en)
+url_api_root = "" #specify the API url root if endpointUrl is not defined in x-metadata
+language_tag = ""  # Specify the correct language (fr, de, it, en) used in the OpenApi basic specification 
 
 #optional
 url_swagger = "" #specify the Swagger webpage url 
