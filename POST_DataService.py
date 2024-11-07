@@ -11,7 +11,7 @@ url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice" #ABNHAME
 # Variables you need to define 
 #######################################
 
-tonek = ""
+token = ""
 id_publisher = ""  # Specify the publisher ID
 language_tag = ""  # Specify the correct language (fr, de, it, en)
 swagger_file_path = 'swagger.json' #specify the correct file path
