@@ -60,10 +60,10 @@ if "endpointUrl" not in metadata:
       {
         "href": url_api_root,
         "label": {
-          "de": "API url root",
-          "en": "API url root",
-          "fr": "Racine de l'url de l'API",
-          "it": "Radice dell'url dell'API"
+          "de": "Endpunkt-URL-Root",
+          "en": "Endpoint URL root",
+          "fr": "Racine de l'URL de l'endpoint",
+          "it": "Radice dell'URL dell'endpoint"
         }
       }
     ]
@@ -74,10 +74,10 @@ if "endpointDescription" not in metadata and url_swagger:
     metadata["endpointDescription"] =  {
         "href": url_swagger,
         "label": {
-          "de": "Swagger UI",
-          "en": "Swagger UI",
-          "fr": "Swagger UI",
-          "it": "Swagger UI"
+            "de": "Swagger Dokumentation",
+            "en": "API Documentation",
+            "fr": "Documentation API",
+            "it": "Documentazione API"
         }
       },
 
