@@ -1,37 +1,68 @@
 # POST a DataService using swagger.json on I14Y
 
-This project contains a Python script `POST_DataService.py` that posts a DataService using the metadata extracted from a Swagger/OpenAPI JSON file and a python script `UPDATE_DataService.py` that updates the posted DataService. The scripts read the `swagger.json`, processe it to create the appropriate metadata format, and then send it to a I14Y API endpoint.
+This project provides two Python scripts to manage DataService metadata on I14Y:
+- `POST_DataService.py`: Posts a new DataService using metadata from a Swagger/OpenAPI JSON file.
+- `UPDATE_DataService.py`: Updates an existing DataService on I14Y.
 
-Currently, the endpoint to POST a DataService on I14Y is not publicly available. It is expected to be made accessible in the coming months for automated use. If you need access immediately, please reach out to the [I14Y team](mailto:i14y@bfs.admin.ch); they can provide you with the appropriate publisher ID required to run the script.
+These scripts process `swagger.json` files, structure the metadata for I14Y, and send it to the API endpoint.
+
+## Features
+The script can import two different type of swagger documentation: 
+
+- **[Standard OpenAPI-compliant Swagger file](https://github.com/I14Y-ch/POST_DataService/edit/main/README.md#example-of-a-standard-openapi-compliant-swagger-file-with-minimal-metadata) with minimal metadata**: After import, the Local Data Steward will need to validate the entry and add translations, optional metadata, and other fields beyond the OpenAPI standard to meet I14Y’s complete documentation requirements.
+- **Fully detailed Swagger file that follows I14Y’s documentation guidelines**: It includes multilingual metadata and all required details, enabling the entry to be used immediately with minimal or no additional setup by the Local Data Steward. This approach ensures full compliance with I14Y’s API documentation standards, promoting consistency and quality across API documentations. 
+  
+Note: The I14Y POST DataService endpoint is currently restricted but expected to be publicly available soon. For early access, contact the [I14Y team](mailto:i14y@bfs.admin.ch) for a publisher ID.
+
+
+## API Publication Guidelines for I14Y
+
+Which APIs must be documented in I14Y?
+- Publish only APIs accessible to external users or applications.
+- Avoid internal-only APIs (e.g., frontend-specific APIs).
+  
+Languages for publication:
+- Initially, APIs can be documented in one language.
+- Over time, Local Data Stewards should complete entries in French, German, and Italian (English is optional).
 
 ## Prerequisites
 
-Before using this script, ensure that you have the following:
-
-- The `requests` library. You can install it via pip if you haven't done so:
-
+Python library `requests`. Install via pip:
   ```bash
   pip install requests
-
+  ```
 ## Usage
-### 1. Set Up the Script:
-- Update the following variables in the script:
-    - `token`: Set your authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
-    - `id_publisher_i14y`: Set the correct publisher ID.
-    - `swagger_file_path`: Update this to point to your swagger.json file.
+### 1. Script Setup:
 
-### 2. Post the DataService:
+Update the following variables in the script:
+- `token`: Authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
+- `id_publisher_i14y`: Your assigned publisher ID.
+- `swagger_file_path`: Path to your `swagger.json` file.
+  
+If needed:
+- `language_tag`: Language of OpenAPI-specified informations (e.g., de, fr, it, en). You may leave this out if following I14Y’s documentation guidelines, as multilingual metadata should already be included.
+- `url_api_root`: If the endpointUrl is not declared in x-metadata, you MUST specify the API url root.
+- `url_swagger`: If the endpointDescription is not declared in x-metadata, you CAN specify the swagger webpage url (recommended).
+      
+Default Access Rights: If not specified, access rights default to non-public. Validation by a Local Data Steward is required to finalize the access level and entry status. 
 
-If you run the script will automatically post the generated metadata to the specified API endpoint (PROD or ABN) and print the response status. 
+### 2. Posting a DataService:
 
-## Update the DataService on I14Y
+Run `POST_DataService.py` to submit the metadata to the I14Y API endpoint (PROD or ABN). The script returns the response status. After import, missing details or translations can be added as needed.
 
-If you need to update the DataService you can run the script `UPDATE_DataService.py`. First you need to set up the script: 
+## Updating a DataService
+
+To update an existing DataService, use `UPDATE_DataService.py`. Configure: 
 - `token`: Set your authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
 - `id_publisher_i14y`: Set the correct publisher ID.
-- `swagger_file_path`: Update this to point to your swagger.json file.
-- `id_object`: state the id of the object that you need to update. *Note: the Id can be derived from the I14Y web interface in the URL of the page dedicated to the specific DataService: https://input.i14y-a.admin.ch/dataservices/{Id}*
-    
+- `swagger_file_path`: Path to your `swagger.json` file.
+- `id_object`: ID of the DataService to update. *Note: the Id can be derived from the I14Y web interface in the URL of the page dedicated to the specific DataService: https://input.i14y-a.admin.ch/dataservices/{Id}*
+  
+If needed:
+- `language_tag`: Language of OpenAPI-specified informations (e.g., de, fr, it, en). You may leave this out if following I14Y’s documentation guidelines, as multilingual metadata should already be included.
+- `url_api_root`: If you need to change the endpointUrl. 
+- `url_swagger`: If the endpointDescription is not yet declared, you CAN specify the swagger webpage url (recommended).
+
 ## Metadata Properties
 The metadata includes several properties, some of which are mandatory for successful posting. Below is a table detailing each property, whether it is mandatory, and what can be stated inside the property. More information regarding the properties and the standards used can be found [here](https://i14y-ch.github.io/handbook/de/6_anhang/eingabefelder/).
 
@@ -57,165 +88,38 @@ The metadata includes several properties, some of which are mandatory for succes
 | __version__ | Enter the version number of the data collection. | string | optional |
 | __versionNotes__ | Enter additional information about the version here. | string | optional | 
 
-## Example of swagger.json structure: 
+## Example of a Standard OpenAPI-compliant Swagger file with minimal metadata: 
+
+In this case you need to define the following variables in order to import the API in I14Y: 
+- `language_tag`: en
+- `url_api_root`: API url root, for example: "https://api.example.com"
+- `url_swagger`: Swagger webpage url, for example: "https://api.example.com/v1/swagger"
 ``` 
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Esempio API",
-    "description": "Technical description displayed in the swagger page.", 
-    "version": "1.0.1",
-    "contact": {
-      "email": "example@email.com", 
-      "name": "contact name"
-    },
-    "x-metadata": {
-      "title": {
-        "de": "string",
-        "en": "API name",
-        "fr": "string",
-        "it": "string",
-        "rm": "string"
-    },
-    "description": {
-      "de": "string",
-      "en": "Business description of the API for non-technical users",
-      "fr": "string",
-      "it": "string",
-      "rm": "string"
-    },
-    "accessRights": {
-        "code": "PUBLIC"
-      },
-    "endpointDescription": [
-      {
-        "url": "https://endpointDescription.ch/",
-        "label": {
-          "de": "string",
-          "en": "string",
-          "fr": "string",
-          "it": "string",
-          "rm": "string"
-        }
+      "title": "API name shown in the swagger page",
+      "description": "Description displayed in the swagger page.", 
+      "version": "1.0.0",
+      "contact": {
+        "email": "example@email.com", 
+        "name": "contact name shown in the swagger page"
       }
-    ],
-    "endpointUrl": [
-      {
-        "url": "https://endpointUrl.ch/",
-        "label": {
-          "de": "string",
-          "en": "string",
-          "fr": "string",
-          "it": "string",
-          "rm": "string"
-        }
-      }
-    ],
-    "contactPoint":  [ {
-        "address": {
-          "de": "string",
-          "en": "string",
-          "fr": "string",
-          "it": "string",
-          "rm": "string"
-        },
-        "email": "string",
-        "organizationName": {
-          "de": "string",
-          "en": "string",
-          "fr": "string",
-          "it": "string",
-          "rm": "string"
-        },
-        "note": {
-          "de": "string",
-          "en": "string",
-          "fr": "string",
-          "it": "string",
-          "rm": "string"
-        },
-        "telephoneNumber": "string"
-      }
-    ],
-      "conformsTo": [
-        {
-          "uri": "https://conformsto.ch/",
-          "label": {
-            "de": "string",
-            "en": "string",
-            "fr": "string",
-            "it": "string",
-            "rm": "string"
-          }
-        }
-      ],
-      
-        "keyword": [
-          {
-            "de": "string",
-            "en": "string",
-            "fr": "string",
-            "it": "string",
-            "rm": "string"
-          }
-        ],
-      "landingPage": [   {
-        "url": "https://landingPage.ch/",
-        "label": {
-          "de": "string",
-          "en": "Label for the landing page",
-          "fr": "string",
-          "it": "string",
-          "rm": "string"
-        }
-      },    {
-        "url": "https://landingPage1.ch/",
-        "label": {
-          "de": "string",
-          "en": "Label for the landing page",
-          "fr": "string",
-          "it": "string",
-          "rm": "string"
-        }
-      }],
-
-      "license": {"code": "terms_by"},
-      "theme": {"code": ["121", "119"]},
-      "versionNotes":{
-        "de": "string",
-        "en": "These are some version notes",
-        "fr": "string",
-        "it": "string",
-        "rm": "string"
-      }, 
-
-      "documentation": [
-        {
-          "url": "https://documentations.ch/",
-          "label": {
-            "de": "string",
-            "en": "string",
-            "fr": "string",
-            "it": "string",
-            "rm": "string"
-          }
-        }
-      ]
-    }
+  },
+  "externalDocs": {
+    "description": "Find more info here", 
+    "url": "https://example.com"
   },
   "paths": {
-    "/api/catalogs/{catalogId}/dcat/exports/rdf": {
-      "get": {
-        "tags": [
-          "Catalogs"
-        ],
-        "summary": "GET DCAT catalog in RDF format.",
-        "description": "Retrieves DCAT catalog by catalog id in RDF format.",
-        "parameters":
 ...
 ``` 
 
-## Example of swagger.json in different languages:
+## Example of a fully detailed Swagger file that follows I14Y’s documentation guidelines
+
+The documentation enables a comprehensive view of the Swagger API while also allowing the direct import of metadata into I14Y. By using the custom `x-metadata{}` property, you can specify all mandatory fields in multiple languages, as well as any recommended or optional fields as needed.
+
+This is a complete example. While it's not required to define every property, it is recommended to include as much detail as possible.
+
 
 ``` 
 {
@@ -244,7 +148,16 @@ The metadata includes several properties, some of which are mandatory for succes
     "accessRights": {
         "code": "PUBLIC"
       },
-    "endpointDescription": [
+    "endpointDescription": [                               -> you can add multiple endpointDescription
+       {
+        "url": "https://api.example.com/v1/swagger",
+        "label": {
+          "de": "Swagger webpage",
+          "en": "Swagger webpage",
+          "fr": "Swagger webpage",
+          "it": "Swagger webpage"
+        }
+      }
       {
         "url": "https://endpointDescription.ch/",
         "label": {
@@ -255,7 +168,7 @@ The metadata includes several properties, some of which are mandatory for succes
         }
       }
     ],
-    "endpointUrl": [
+    "endpointUrl": [                             -> you can add multiple endpointUrl
       {
         "url": "https://endpointUrl.ch/",
         "label": {
@@ -266,7 +179,7 @@ The metadata includes several properties, some of which are mandatory for succes
         }
       }
     ],
-    "contactPoint": [
+    "contactPoint": [                            -> you can add multiple contactPoint
       {
         "address": {
           "de": "Hauptstrasse 1, Beispielstadt, Deutschland",
@@ -274,12 +187,13 @@ The metadata includes several properties, some of which are mandatory for succes
           "fr": "1 Rue Principale, Ville Exemple, Allemagne",
           "it": "Via Principale 1, Città di Esempio, Germania"
         },
-        "email": "kontakt@beispiel.com",
-        "organizationName": {
-          "de": "Beispiel",
-          "en": "Example",
-          "fr": "Exemple",
-          "it": "Esempio"
+        "telWorkVoice": "0910000000 -> telephone number"
+        "emailInternet": "kontakt@beispiel.com",
+        "fn": {
+          "de": "Name der Organisation",
+          "en": "Organization name",
+          "fr": "Nom de l'organization",
+          "it": "Nome dell'organizzazione"
         },
         "note": {
           "de": "Kontaktieren Sie uns für weitere Informationen.",
@@ -289,7 +203,7 @@ The metadata includes several properties, some of which are mandatory for succes
         }
       }
     ],    
-      "conformsTo": [
+      "conformsTo": [                              -> you can add multiple conformsTo
         {
           "url": "https://conformsto.ch/",
           "label": {
@@ -301,7 +215,7 @@ The metadata includes several properties, some of which are mandatory for succes
         }
       ],
       
-      "keyword": [
+      "keyword": [                                -> you can add multiple keywords
         {
           "de": "Stichwort",
           "en": "keyword",
@@ -309,7 +223,7 @@ The metadata includes several properties, some of which are mandatory for succes
           "it": "parola chiave"
         }
       ],        
-      "landingPage": [   {
+      "landingPage": [   {                         -> you can add multiple landingPage
         "url": "https://landingPage.ch/",
         "label": {
           "de": "label",
@@ -329,7 +243,7 @@ The metadata includes several properties, some of which are mandatory for succes
 
       "license": {"code": "terms_by"},
 
-      "theme": {"code": ["121", "119"]},
+      "theme": {"code": ["121", "119"]},                 -> you can add multiple themes
 
       "versionNotes": {
         "de": "Dies sind einige Versionshinweise",
@@ -338,7 +252,7 @@ The metadata includes several properties, some of which are mandatory for succes
         "it": "Queste sono alcune note di versione"
       },      
 
-      "documentation": [
+      "documentation": [                                -> you can add multiple doumentations 
         {
           "url": "https://documentations.ch",
           "label": {
