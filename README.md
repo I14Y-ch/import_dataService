@@ -163,10 +163,10 @@ This is a complete example. While it's not required to define every property, it
       {
         "url": "https://endpointDescription.ch/",
         "label": {
-          "de": "Endpunkt-Label",
-          "en": "Endpoint label",
-          "fr": "Nom du endpoint",
-          "it": "Nome dell'endpoint"
+            "de": "Swagger Dokumentation",
+            "en": "API Documentation",
+            "fr": "Documentation API",
+            "it": "Documentazione API"
         }
       }
     ],
@@ -174,10 +174,10 @@ This is a complete example. While it's not required to define every property, it
       {
         "url": "https://endpointUrl.ch/",
         "label": {
-          "de": "Endpunkt url Label",
-          "en": "EndpointUrl label",
-          "fr": "Nom du endpointUrl",
-          "it": "Nome dell'endpointUrl"
+          "de": "Endpunkt-URL-Root",
+          "en": "Endpoint URL root",
+          "fr": "Racine de l'URL de l'endpoint",
+          "it": "Radice dell'URL dell'endpoint"
         }
       }
     ],
