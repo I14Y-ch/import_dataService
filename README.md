@@ -90,10 +90,12 @@ The metadata includes several properties, some of which are mandatory for succes
 
 ## Example of a Standard OpenAPI-compliant Swagger file with minimal metadata: 
 
-In this case you need to define the following variables in order to import the API in I14Y: 
+In this case some mandatory information are not specified in the swagger documentation, therfore you need to define the following variables in order to import the API in I14Y: 
 - `language_tag`: en
 - `url_api_root`: API url root, for example: "https://api.example.com"
 - `url_swagger`: Swagger webpage url, for example: "https://api.example.com/v1/swagger"
+
+The accessRights are by default set to NON_PUBLIC, Validation by a Local Data Steward is required to finalize the access level and entry status. 
 ``` 
 {
   "openapi": "3.0.1",
