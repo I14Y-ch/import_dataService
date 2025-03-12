@@ -1,4 +1,4 @@
-# Import a dataService using swagger.json on I14Y
+# Import a dataService using an OpenAPI swagger specification (in json format)
 
 This project provides two Python scripts to manage DataService metadata on I14Y:
 - `import_dataService.py`: Posts a new DataService using metadata from a Swagger/OpenAPI JSON file.
@@ -9,8 +9,8 @@ These scripts process `data/swagger.json` files, structure the metadata for I14Y
 ## Features
 The script can import two different type of swagger documentation: 
 
-- **[Standard OpenAPI](https://swagger.io/specification/)-compliant Swagger file with minimal metadata**: After import, the Local Data Steward will need to validate the entry and add translations, optional metadata, and other fields beyond the OpenAPI standard to meet [I14Y’s complete documentation requirements](https://github.com/I14Y-ch/POST_DataService?tab=readme-ov-file#metadata-properties). You can find an example [here](https://github.com/I14Y-ch/POST_DataService?tab=readme-ov-file#example-of-a-standard-openapi-compliant-swagger-file-with-minimal-metadata).
-- **Fully detailed Swagger file that follows I14Y’s documentation guidelines**: It includes multilingual metadata and all required details, enabling the entry to be used immediately with minimal or no additional setup by the Local Data Steward. This approach ensures full compliance with I14Y’s API documentation standards, promoting consistency and quality across API documentations. You can find an example [here](https://github.com/I14Y-ch/POST_DataService?tab=readme-ov-file#example-of-a-fully-detailed-swagger-file-that-follows-i14ys-documentation-guidelines).
+- **[Standard OpenAPI](https://swagger.io/specification/)-compliant Swagger file with minimal metadata**: After import, the Local Data Steward will need to validate the entry and add translations, optional metadata, and other fields beyond the OpenAPI standard to meet [I14Y’s complete documentation requirements](https://github.com/I14Y-ch/import_dataService?tab=readme-ov-file#metadata-properties). You can find an example [here](https://github.com/I14Y-ch/import_dataService?tab=readme-ov-file#example-of-a-standard-openapi-compliant-swagger-file-with-minimal-metadata).
+- **Fully detailed Swagger file that follows I14Y’s documentation guidelines**: It includes multilingual metadata and all required details, enabling the entry to be used immediately with minimal or no additional setup by the Local Data Steward. This approach ensures full compliance with I14Y’s API documentation standards, promoting consistency and quality across API documentations. You can find an example [here](https://github.com/I14Y-ch/import_dataService?tab=readme-ov-file#example-of-a-fully-detailed-swagger-file-that-follows-i14ys-documentation-guidelines).
   
 Note: The I14Y POST DataService endpoint is currently restricted but expected to be publicly available soon. For early access, contact the [I14Y team](mailto:i14y@bfs.admin.ch) for a publisher ID.
 
