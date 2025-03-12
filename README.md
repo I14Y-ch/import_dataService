@@ -27,10 +27,37 @@ Languages for publication:
 
 ## Prerequisites
 
-Python library `requests`. Install via pip:
-  ```bash
-  pip install requests
-  ```
+- Python 3.8+
+- pip package manager
+
+## Installation
+
+1. Clone this repository:
+```bash
+git clone [repository-url]
+cd import_rdf_datasets
+```
+
+2. (Optional but recommended) Create and activate a virtual environment:
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Configure the application:
+   - Edit `src/config.py` with your I14Y API token, organization ID and right file format ("xml" or "ttl")
+
 ## Usage
 ### 1. Script Setup:
 
@@ -269,4 +296,25 @@ This is a complete example. While it's not required to define every property, it
   },
 
 
+## File Structure
+
+```
+import_rdf_datasets/
+├── data/
+│   └── swagger.json
+├── src/
+│   ├── config.py
+│   ├── update_dataService.py
+│   ├── import_dataService.py
+├── requirements.txt
+└── README.md
+```
+
+## Contributing
+
+Please ensure any pull requests or contributions adhere to the following guidelines:
+- Keep the code simple and well-documented
+- Follow PEP 8 style guidelines
+- Include appropriate error handling
+- Test thoroughly before submitting
 
