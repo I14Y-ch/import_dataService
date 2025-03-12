@@ -299,7 +299,7 @@ This is a complete example. While it's not required to define every property, it
 ## File Structure
 
 ```
-import_rdf_datasets/
+import_dataService/
 ├── data/
 │   └── swagger.json
 ├── src/
