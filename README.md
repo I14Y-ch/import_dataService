@@ -1,8 +1,8 @@
-# POST a DataService using swagger.json on I14Y
+# Import a dataService using swagger.json on I14Y
 
 This project provides two Python scripts to manage DataService metadata on I14Y:
-- `POST_DataService.py`: Posts a new DataService using metadata from a Swagger/OpenAPI JSON file.
-- `UPDATE_DataService.py`: Updates an existing DataService on I14Y.
+- `import_dataService.py`: Posts a new DataService using metadata from a Swagger/OpenAPI JSON file.
+- `update_dataService.py`: Updates an existing DataService on I14Y.
 
 These scripts process `swagger.json` files, structure the metadata for I14Y, and send it to the API endpoint.
 
