@@ -5,7 +5,7 @@ url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice" #ABNHAME
 
 token = ""
 id_publisher = ""  # Specify the publisher ID
-swagger_file_path = 'swagger.json' #specify the correct file path
+swagger_file_path = 'data/swagger.json' #specify the correct file path
 # NECESSARY TO UPDATE DATASERVICE
 #id_object = "" #state the id of the object that you need to update
 
