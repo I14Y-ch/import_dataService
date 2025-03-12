@@ -1,0 +1,147 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "API name shown in the swagger page",
+      "description": "Technical description displayed in the swagger page.", 
+      "version": "1.0.0",
+      "contact": {
+        "email": "example@email.com", 
+        "name": "contact name shown in the swagger page"
+      },
+      "x-metadata": {
+        "title": {
+          "de": "API-Name1",
+          "en": "API name",
+          "fr": "Nom de l'API",
+          "it": "Nome dell'API"
+      },
+      "description": {
+        "de": "Beschreibung der API für nicht-technische Benutzer",
+        "en": "Business description of the API for non-technical users",
+        "fr": "Description métier de l'API pour les utilisateurs non techniques",
+        "it": "Descrizione dell'API per utenti non tecnici"
+      },
+      "accessRights": {
+          "code": "PUBLIC"
+        },
+      "endpointDescription": [                               
+         {
+          "url": "https://api.example.com/v1/swagger",
+          "label": {
+            "de": "Swagger webpage",
+            "en": "Swagger webpage",
+            "fr": "Swagger webpage",
+            "it": "Swagger webpage"
+          }
+        },
+        {
+          "url": "https://endpointDescription.ch/",
+          "label": {
+              "de": "Swagger Dokumentation",
+              "en": "API Documentation",
+              "fr": "Documentation API",
+              "it": "Documentazione API"
+          }
+        }
+      ],
+      "endpointUrl": [                             
+        {
+          "url": "https://endpointUrl.ch/",
+          "label": {
+            "de": "Endpunkt-URL-Root",
+            "en": "Endpoint URL root",
+            "fr": "Racine de l'URL de l'endpoint",
+            "it": "Radice dell'URL dell'endpoint"
+          }
+        }
+      ],
+      "contactPoint": [                           
+        {
+          "address": {
+            "de": "Hauptstrasse 1, Beispielstadt, Deutschland",
+            "en": "1 Main Street, Sample City, Germany",
+            "fr": "1 Rue Principale, Ville Exemple, Allemagne",
+            "it": "Via Principale 1, Città di Esempio, Germania"
+          },
+          "telWorkVoice": "0910000000 -> telephone number",
+          "emailInternet" : "kontakt@beispiel.com",
+          "fn": {
+            "de": "Name der Organisation",
+            "en": "Organization name",
+            "fr": "Nom de l'organization",
+            "it": "Nome dell'organizzazione"
+          },
+          "note": {
+            "de": "Kontaktieren Sie uns für weitere Informationen.",
+            "en": "Contact us for more information.",
+            "fr": "Contactez-nous pour plus d'informations.",
+            "it": "Contattaci per ulteriori informazioni."
+          }
+        }
+      ],    
+        "conformsTo": [                            
+          {
+            "url": "https://conformsto.ch/",
+            "label": {
+              "de": "label",
+              "en": "label",
+              "fr": "label",
+              "it": "label"
+            }
+          }
+        ],
+        
+        "keyword": [                            
+          {
+            "de": "Stichwort",
+            "en": "keyword",
+            "fr": "mot-clé",
+            "it": "parola chiave"
+          }
+        ],        
+        "landingPage": [   {                         
+          "url": "https://landingPage.ch/",
+          "label": {
+            "de": "label",
+            "en": "label",
+            "fr": "label",
+            "it": "label"
+          }
+        },    {
+          "url": "https://landingPage1.ch/",
+          "label": {
+            "de": "label",
+            "en": "label",
+            "fr": "label",
+            "it": "label"
+          }
+        }],
+  
+        "license": {"code": "terms_by"},
+  
+        "theme": {"code": ["121", "119"]},                
+  
+        "versionNotes": {
+          "de": "Dies sind einige Versionshinweise",
+          "en": "These are some version notes",
+          "fr": "Voici quelques notes de version",
+          "it": "Queste sono alcune note di versione"
+        },      
+  
+        "documentation": [                               
+          {
+            "url": "https://documentations.ch",
+            "label": {
+              "de": "label",
+              "en": "label",
+              "fr": "label",
+              "it": "label"
+            }
+          }
+        ]
+      }
+    }
+}
+  
+  
+  

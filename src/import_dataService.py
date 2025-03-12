@@ -1,25 +1,8 @@
 from requests import Session
 from requests.auth import HTTPBasicAuth
-from requests import put
+from requests import post
 import json
-
-
-url = "https://dcat-a.app.cfap02.atlantica.admin.ch/api/Dataservice" #ABNHAME
-# url = "https://dcat.app.cfap02.atlantica.admin.ch/api/Dataservice" #PRODUCTION
-
-#######################################
-# Variables you need to define 
-#######################################
-
-token = ""
-id_publisher = ""  # Specify the publisher ID
-swagger_file_path = 'swagger.json' #specify the correct file path
-id_object = "" #state the id of the object that you need to update
-
-#if needed
-url_swagger = "" #specify the Swagger webpage url if you need to change it or it has not been specfied before
-url_api_root = "" #specify the API url root if you need to change it
-language_tag = ""  # Specify the correct language (fr, de, it, en)
+from config import *
 
 #######################################
 # Logic to handle metadata
@@ -35,7 +18,6 @@ x_metadata = swagger_data.get("info", {}).get("x-metadata", {})
 if x_metadata:
     metadata.update(x_metadata)
 
-metadata['id'] = id_object
 metadata['publisher'] = {"id": id_publisher}
 metadata['version'] = swagger_data.get("info", {}).get("version", "")
 
@@ -69,6 +51,7 @@ if "endpointUrl" not in metadata:
         }
       }
     ]
+
 
     
 if "endpointDescription" not in metadata and url_swagger:
@@ -140,12 +123,14 @@ with open(output_file_path, 'r') as file:
 #json_data = json.dumps(metadata, ensure_ascii=False, indent=4)
 
 #######################################
-# Update API metdata on i14y
+# POST API metdata on i14y
 #######################################
 
-
-response = put(url, headers=headers, data=json_data, verify=False)
-if response.status_code == 204:
-    print(f'DataService updated correctly. Status-Code: {response.status_code}')
+response = post(url, headers=headers, data=json_data, verify=False)
+if response.status_code == 201:
+    print(f'DataService posted correctly. Status-Code: {response.status_code}')
+    response_json = response.json()
+    print(f'DataService ID: {response_json["id"]}')
+    print(f'Response content: {response.content}')
 else:
     print(f"Error: {response.status_code} - {response.text}")
