@@ -4,7 +4,7 @@ This project provides two Python scripts to manage DataService metadata on I14Y:
 - `import_dataService.py`: Posts a new DataService using metadata from a Swagger/OpenAPI JSON file.
 - `update_dataService.py`: Updates an existing DataService on I14Y.
 
-These scripts process `swagger.json` files, structure the metadata for I14Y, and send it to the API endpoint.
+These scripts process `data/swagger.json` files, structure the metadata for I14Y, and send it to the API endpoint.
 
 ## Features
 The script can import two different type of swagger documentation: 
@@ -56,15 +56,14 @@ pip install -r requirements.txt
 ```
 
 4. Configure the application:
-   - Edit `src/config.py` with your I14Y API token, organization ID and right file format ("xml" or "ttl")
+   - Edit `src/config.py`
 
-## Usage
+## Configure the application
 ### 1. Script Setup:
 
 Update the following variables in the script:
 - `token`: Authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
 - `id_publisher_i14y`: Your assigned publisher ID.
-- `swagger_file_path`: Path to your `swagger.json` file.
   
 If needed:
 - `language_tag`: Language of OpenAPI-specified informations (e.g., de, fr, it, en). You may leave this out if following I14Y’s documentation guidelines, as multilingual metadata should already be included.
@@ -75,14 +74,13 @@ Default Access Rights: If not specified, access rights default to non-public. Va
 
 ### 2. Posting a DataService:
 
-Run `POST_DataService.py` to submit the metadata to the I14Y API endpoint (PROD or ABN). The script returns the response status. After import, missing details or translations can be added as needed.
+Run `import_dataService.py` to submit the metadata to the I14Y API endpoint (PROD or ABN). The script returns the response status. After import, missing details or translations can be added as needed.
 
 ## Updating a DataService
 
-To update an existing DataService, use `UPDATE_DataService.py`. Configure: 
+To update an existing DataService, use `update_dataService.py`. Configure: 
 - `token`: Set your authorization token (To find the authorization token: log in to the internal area of the platform, click on the user symbol in the upper righ corner and then on “Copy access token”).
 - `id_publisher_i14y`: Set the correct publisher ID.
-- `swagger_file_path`: Path to your `swagger.json` file.
 - `id_object`: ID of the DataService to update. *Note: the Id can be derived from the I14Y web interface in the URL of the page dedicated to the specific DataService: https://input.i14y-a.admin.ch/dataservices/{Id}*
   
 If needed:
